@@ -1,3 +1,4 @@
+// NOTE: my ugly solution
 function longest_palindrome(s) {
   const slen = s.length;
   
@@ -30,4 +31,22 @@ function longest_palindrome(s) {
   }
   
   return max;
+}
+
+
+// NOTE: solution we made together with pro :D (he made actually and I agreed)
+function longest_palindrome(s) {
+  
+  let left = 0;
+  let right = 0;
+  
+  for (let i = 0; i < s.length; i++) {
+    for (let j of [i, i + 1]) {
+      for (let l = i, r = j; s[l] && s[l] === s[r]; l--, r++) {
+        [left, right] = (r - l + 1) > (right - left + 1) ? [l, r] : [left, right];
+      }
+    }
+  }
+  
+  return s.substring(left, right + 1);
 }
