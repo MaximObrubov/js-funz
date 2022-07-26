@@ -1,11 +1,9 @@
 function matrixMultiplication(a, b) {
-  const size = a.length;
-  // Initialize another way for not squared matrixes
-  const res = (new Array(size)).fill(null).map(n => new Array(size).fill(0));
-  
-  for (let i = 0; i < size; i++) {
-    for (let j = 0; j < size; j++) {
-      for (let n = 0; n < size; n++) {
+  const res = a.map(_ => b[0].map(_ => 0));
+
+  for (let i = 0; i < a.length; i++) {
+    for (let j = 0; j < b[0].length; j++) {
+      for (let n = 0; n < a[0].length; n++) {
         res[i][j] += a[i][n] * b[n][j];
       }
     }
